@@ -9,9 +9,9 @@ commands:
       - checkout
       - run: npm install
       - persist_to_workspace:
-          root: /src
+          root: /home/circleci
           paths:
-            - node_modules/*
+            - project/*
 
 jobs:
   build:
