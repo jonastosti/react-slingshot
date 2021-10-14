@@ -15,10 +15,18 @@ jobs:
     steps:
       - checkout_code_dependencies
       - run: npm run lint
-
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+           at: /home/circleci/project/node_modules
+      - run: npm run test
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
       - build
+      - test:
+          requires:
+          - build
