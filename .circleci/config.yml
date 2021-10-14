@@ -8,6 +8,10 @@ commands:
     steps:
       - checkout
       - run: npm install
+      - persist_to_workspace:
+          root: /home/circleci/project/
+          paths:
+            - node_modules
 
 jobs:
   build:
